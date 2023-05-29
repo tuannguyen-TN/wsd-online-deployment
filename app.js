@@ -1,4 +1,4 @@
-import { serve } from './deps';
+import { serve } from './deps.js';
 
 const handleRequest = (request) => {
   return new Response('Hello world!');
