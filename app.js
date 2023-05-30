@@ -9,18 +9,22 @@ const responseDetails = {
   headers: { 'Content-Type': 'text/html;charset=UTF-8' },
 };
 
-const data = {
+const visit = {
   count: 0,
 };
 
 const handleRequest = async (request) => {
   const url = new URL(request.url);
-  if (url.pathname === '/count') {
-    data.count++;
-    return new Response(await renderFile('count.eta', data), responseDetails);
+  if (url.pathname === '/visits') {
+    visit.count++;
+    return new Response(await renderFile('count.eta', visit), responseDetails);
+  } else if (url.pathname === '/meaning') {
+    return new Response(
+      'Seeking truths beyond meaning of life, you wil find 43.'
+    );
   }
 
-  return new Response('Hello you!');
+  return new Response('Nothing here yet.');
 };
 
 serve(handleRequest, { port: 7777 });
